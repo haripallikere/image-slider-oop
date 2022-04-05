@@ -115,9 +115,7 @@ h1 {
 .slide {
   height: 600px;
   max-height: 100vh;
-  /* width: 100%; */
   display: flex;
-  /* justify-content: center; */
 }
 
 .slide img {
@@ -126,6 +124,7 @@ h1 {
 }
 
 .slider__btn-container {
+  display: none;
   position: absolute;
   width: 100%;
 }
@@ -154,6 +153,7 @@ h1 {
 }
 
 .slider__btn svg {
+  transform: translateX(-1px);
   pointer-events: none;
 }
 
@@ -167,6 +167,7 @@ h1 {
 }
 
 .navigation__indicators {
+ 
   margin-left: 20px;
   height: 20px;
   width: 20px;
@@ -181,4 +182,8 @@ h1 {
 
 .active {
   background-color: gold;
+}
+
+.slider:hover .slider__btn-container {
+display: block;
 }

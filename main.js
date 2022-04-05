@@ -1,5 +1,3 @@
-// import "./style.css";
-
 // images links
 const images = [
   "./images/image5.jpg",
@@ -29,13 +27,13 @@ class ImageSlider {
   }
 
   //populates images to dom
-  generateImages = () => {
+  generateImages() {
     this.slide.innerHTML = this.images
       .map((v) => {
         return `<img src="${v}">`;
       })
       .join("");
-  };
+  }
 
   //populate indicators
   generateIndicators() {
@@ -52,10 +50,10 @@ class ImageSlider {
   }
 
   // move images
-  moveSlide = () => {
+  moveSlide() {
     console.log(this.slideIndex);
     this.slide.style.transform = `translateX(-${this.slideIndex * 100}%)`;
-  };
+  }
 
   // onclick
   moveHandler(direction) {
