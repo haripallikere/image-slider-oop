@@ -113,6 +113,7 @@ h1 {
 }
 
 .slide {
+  user-select: none;
   height: 600px;
   max-height: 100vh;
   display: flex;
