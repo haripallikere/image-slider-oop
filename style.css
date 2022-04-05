@@ -80,8 +80,8 @@ html {
   min-height: 100vh;
 }
 
-
 body {
+  height: 100%;;
   overflow: hidden;
   height: 100%;
   display: grid;
@@ -95,9 +95,7 @@ main {
 .container {
   display: grid;
   place-items: center;
-  /* min-height: 100vh; */
-  align-content: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 h1 {
@@ -160,7 +158,6 @@ h1 {
 }
 
 .navigation__bar {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
