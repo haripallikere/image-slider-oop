@@ -73,6 +73,16 @@ select {
   }
 }
 
+
+
+body {
+  overflow: hidden;
+  /* Hide scrollbars */
+}
+main {
+  background-color: black;
+}
+
 .container {
   display: grid;
   place-items: center;
@@ -83,25 +93,27 @@ select {
 
 h1 {
   margin-bottom: 25px;
+  line-height: 1.2rem;
+  color: wheat;
 }
 
 .slider {
   position: relative;
   display: grid;
   place-items: center;
-  max-width: 800px;
+  max-width: 60%;
   overflow: hidden;
 }
 
 .slide {
-  height: 500px;
+  height: 600px;
   max-height: 100vh;
+  /* width: 100%; */
   display: flex;
   /* justify-content: center; */
 }
 
 .slide img {
-  /* width: 100%; */
   flex: 1 0 100%;
   object-fit: cover;
 }
@@ -136,4 +148,31 @@ h1 {
 
 .slider__btn svg {
   pointer-events: none;
+}
+
+.navigation__bar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+
+}
+
+.navigation__indicators {
+  margin-left: 20px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.navigation__indicators:hover {
+  background-color: wheat;
+}
+
+.active {
+  background-color: gold;
 }
