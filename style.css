@@ -76,20 +76,26 @@ select {
   }
 }
 
+html {
+  min-height: 100vh;
+}
 
 
 body {
   overflow: hidden;
-  /* Hide scrollbars */
+  height: 100%;
+  display: grid;
+  place-items: center;
 }
 main {
+  height: 100%;
   background-color: black;
 }
 
 .container {
   display: grid;
   place-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   align-content: center;
   padding: 2rem;
 }
