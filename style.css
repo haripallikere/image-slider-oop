@@ -89,6 +89,7 @@ body {
 }
 main {
   height: 100%;
+  width: 100%;
   background-color: black;
 }
 
@@ -120,6 +121,7 @@ h1 {
 }
 
 .slide img {
+  background: blue;
   flex: 1 0 100%;
   object-fit: cover;
 }

@@ -20,17 +20,22 @@ class ImageSlider {
   constructor(slide, images, document, indicatorsContainer) {
     this.slide = slide;
     this.images = images;
-    this.slideIndex = 1;
     this.document = document;
     this.isTransition = false;
     this.indicatorsContainer = indicatorsContainer;
+    this.slideIndex = 1;
   }
 
   //populates images to dom
   generateImages() {
     this.slide.innerHTML = this.images
-      .map((v) => {
-        return `<img src="${v}">`;
+      .map((v, i) => {
+        if (i <= 1) {
+          return `<img src="${v}" id="${i}">`;
+        }
+        if (i >= 2) {
+          return `<img data-src="${v}" id="${i}" class="lazy">`;
+        }
       })
       .join("");
   }
@@ -40,18 +45,16 @@ class ImageSlider {
     const removeClonedImages = [...this.images];
     removeClonedImages.shift();
     removeClonedImages.pop();
-
     this.indicatorsContainer.innerHTML = removeClonedImages
       .map((v, index) => {
         return `<button class="navigation__indicators" id="${index}"></button>`;
       })
       .join("");
-    // return a;
   }
 
   // move images
   moveSlide() {
-    console.log(this.slideIndex);
+    this.lazyLoading();
     this.slide.style.transform = `translateX(-${this.slideIndex * 100}%)`;
   }
 
@@ -61,9 +64,11 @@ class ImageSlider {
     this.slide.style.transition = "transform .6s ease-in-out";
     if (direction === "right") {
       this.slideIndex += 1;
+
       this.moveSlide();
     } else if (direction === "left") {
       this.slideIndex -= 1;
+
       this.moveSlide();
     }
     this.showActiveIndicator();
@@ -89,6 +94,16 @@ class ImageSlider {
     this.slide.style.transition = "transform .6s ease-in-out";
     this.moveSlide();
     this.showActiveIndicator();
+    this.lazyLoading();
+  }
+
+  lazyLoading() {
+    let unloadedImg = this.document.querySelectorAll("img.lazy");
+    if (this.slideIndex >= 2) {
+      console.log(unloadedImg[0].id);
+      unloadedImg[this.slideIndex - 2].src =
+        unloadedImg[this.slideIndex - 2].dataset.src;
+    }
   }
 
   showActiveIndicator() {
@@ -120,6 +135,7 @@ slider.generateImages();
 slider.moveSlide();
 slider.generateIndicators();
 slider.showActiveIndicator();
+// slider.lazyLoading();
 
 //event listers handlers;
 nextBtn.addEventListener("click", () => {
