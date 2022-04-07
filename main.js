@@ -94,13 +94,11 @@ class ImageSlider {
     this.slide.style.transition = "transform .6s ease-in-out";
     this.moveSlide();
     this.showActiveIndicator();
-    this.lazyLoading();
   }
 
   lazyLoading() {
     let unloadedImg = this.document.querySelectorAll("img.lazy");
     if (this.slideIndex >= 2) {
-      console.log(unloadedImg[0].id);
       unloadedImg[this.slideIndex - 2].src =
         unloadedImg[this.slideIndex - 2].dataset.src;
     }
@@ -135,7 +133,6 @@ slider.generateImages();
 slider.moveSlide();
 slider.generateIndicators();
 slider.showActiveIndicator();
-// slider.lazyLoading();
 
 //event listers handlers;
 nextBtn.addEventListener("click", () => {
@@ -151,8 +148,6 @@ previousBtn.addEventListener("click", () => {
 slides.addEventListener("transitionend", () => {
   slider.inifiniteSlide();
 });
-
-// console.log(indicators, "d");
 
 const indicators = document.querySelectorAll(".navigation__indicators");
 indicators.forEach((v) => {

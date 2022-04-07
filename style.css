@@ -76,12 +76,14 @@ select {
   }
 }
 
+/* ///////////////////////////////////////////////************* */
+
 html {
-  min-height: 100vh;
+  height: 100vh;
 }
 
 body {
-  height: 100%;;
+  /* height: 100%; */
   overflow: hidden;
   height: 100%;
   display: grid;
@@ -106,18 +108,24 @@ h1 {
 }
 
 .slider {
+  display: block;
+  /* margin: auto; */
   position: relative;
-  display: grid;
-  place-items: center;
-  max-width: 60%;
+  /* display: grid; */
+  /* place-items: center; */
+  max-width: 70%;
+  height: 600px;
   overflow: hidden;
 }
 
 .slide {
+  display: block;
+  /* display: grid; */
+  /* place-items: center; */
+  height: 100%;
   user-select: none;
-  height: 600px;
-  max-height: 100vh;
   display: flex;
+  height: 600px;
 }
 
 .slide img {
@@ -127,31 +135,35 @@ h1 {
 }
 
 .slider__btn-container {
-  display: none;
+  z-index: 10000000;
   position: absolute;
   width: 100%;
+  height: 100%;
+  /* display: none; */
 }
 
 .slider__btn {
-  height: 50px;
+  border: 10px solid red;
+  height: 100%;
   width: 50px;
-  border-radius: 50%;
   border: none;
   text-align: center;
   position: absolute;
-  z-index: 10;
-  top: 50%;
+  z-index: 1000;
+  top: 0;
   display: grid;
   place-items: center;
   cursor: pointer;
-  opacity: .3;
+  display: none;
 }
 
 .slider__btn--right {
+  opacity: .2;
   right: 0;
 }
 
 .slider__btn--left {
+  opacity: .2;
   left: 0;
 }
 
@@ -166,11 +178,9 @@ h1 {
   align-items: center;
   width: 100%;
   height: 50px;
-
 }
 
 .navigation__indicators {
- 
   margin-left: 20px;
   height: 20px;
   width: 20px;
@@ -187,6 +197,15 @@ h1 {
   background-color: gold;
 }
 
-.slider:hover .slider__btn-container {
-display: block;
+.slider:hover .slider__btn {
+  display: block;
 }
+
+
+
+
+
+
+
+
+
