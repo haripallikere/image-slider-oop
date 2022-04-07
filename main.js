@@ -98,7 +98,7 @@ class ImageSlider {
 
   lazyLoading() {
     let unloadedImg = this.document.querySelectorAll("img.lazy");
-    if (this.slideIndex >= 2) {
+    if (this.slideIndex >= 2 && unloadedImg[this.slideIndex - 2].src === "") {
       unloadedImg[this.slideIndex - 2].src =
         unloadedImg[this.slideIndex - 2].dataset.src;
     }
