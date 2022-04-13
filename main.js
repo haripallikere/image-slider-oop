@@ -47,7 +47,9 @@ class ImageSlider {
     removeClonedImages.pop();
     this.indicatorsContainer.innerHTML = removeClonedImages
       .map((v, index) => {
-        return `<button class="navigation__indicators" id="${index}"></button>`;
+        return `<button class="navigation__indicators" id="${
+          index + 1
+        }"></button>`;
       })
       .join("");
   }
@@ -90,7 +92,7 @@ class ImageSlider {
 
   indicator(e) {
     let id = Number(e.target.id);
-    this.slideIndex = id + 1;
+    this.slideIndex = id;
     this.slide.style.transition = "transform .6s ease-in-out";
     this.moveSlide();
     this.showActiveIndicator();
