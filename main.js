@@ -28,16 +28,18 @@ class ImageSlider {
 
   //populates images to dom
   generateImages() {
-    this.slide.innerHTML = this.images
-      .map((v, i) => {
-        if (i <= 1) {
-          return `<img src="${v}" id="${i}">`;
-        }
-        if (i >= 2) {
-          return `<img data-src="${v}" id="${i}" class="lazy">`;
-        }
-      })
-      .join("");
+    this.images.map((v, i) => {
+      const img = this.document.createElement("img");
+      if (i <= 1) {
+        img.setAttribute("id", `${i}`);
+        img.setAttribute("src", `${v}`);
+      } else {
+        img.setAttribute("id", `${i}`);
+        img.setAttribute("class", "lazy");
+        img.setAttribute("data-src", `${v}`);
+      }
+      this.slide.append(img);
+    });
   }
 
   //populate indicators
@@ -45,11 +47,12 @@ class ImageSlider {
     const removeClonedImages = [...this.images];
     removeClonedImages.shift();
     removeClonedImages.pop();
-    this.indicatorsContainer.innerHTML = removeClonedImages
-      .map((v, index) => {
-        return `<button class="navigation__indicators" id="${index}"></button>`;
-      })
-      .join("");
+    removeClonedImages.map((v, index) => {
+      let btn = this.document.createElement("button");
+      btn.setAttribute("class", "navigation__indicators");
+      btn.setAttribute("id", `${index}`);
+      this.indicatorsContainer.append(btn);
+    });
   }
 
   // move images
@@ -64,11 +67,9 @@ class ImageSlider {
     this.slide.style.transition = "transform .6s ease-in-out";
     if (direction === "right") {
       this.slideIndex += 1;
-
       this.moveSlide();
     } else if (direction === "left") {
       this.slideIndex -= 1;
-
       this.moveSlide();
     }
     this.showActiveIndicator();
